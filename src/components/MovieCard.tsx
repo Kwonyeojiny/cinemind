@@ -1,4 +1,4 @@
-const baseUrl = 'https://image.tmdb.org/t/p/w500';
+import { baseUrl } from '../constants/api';
 
 type MovieCardProps = {
   title: string;
