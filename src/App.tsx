@@ -1,10 +1,12 @@
 import './App.css';
 import MovieCard from './components/MovieCard';
 import movieListData from './data/movieListData.json';
+import MovieDetail from './pages/MovieDetail';
 
 function App() {
   return (
     <>
+      <MovieDetail />
       <div className="flex flex-wrap justify-center items-center gap-8">
         {movieListData.results.map(movie => (
           <MovieCard
