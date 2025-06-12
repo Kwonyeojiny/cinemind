@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import MovieDetail from './pages/MovieDetail';
 import MovieList from './pages/MovieList';
@@ -5,8 +6,10 @@ import MovieList from './pages/MovieList';
 function App() {
   return (
     <>
-      <MovieDetail />
-      <MovieList />
+      <Routes>
+        <Route path="/" element={<MovieList />} />
+        <Route path="/details/:id" element={<MovieDetail />} />
+      </Routes>
     </>
   );
 }
