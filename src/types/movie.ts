@@ -10,7 +10,7 @@ export type MovieListItem = {
   overview: string;
 };
 
-export type MovieDetail = {
+export type MovieDetailItem = {
   id: number;
   title: string;
   poster_path: string;

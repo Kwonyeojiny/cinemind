@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { baseUrl } from '../constants/api';
 import { useEffect, useState } from 'react';
-import type { MovieDetail } from '../types/movie';
+import type { MovieDetailItem } from '../types/movie';
 import { fetchMovieDetail } from '../api/tmdb';
 
 const MovieDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [movie, setMovie] = useState<MovieDetail | null>(null);
+  const [movie, setMovie] = useState<MovieDetailItem | null>(null);
 
   useEffect(() => {
     if (!id) return;
