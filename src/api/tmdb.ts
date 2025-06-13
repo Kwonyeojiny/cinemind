@@ -26,3 +26,13 @@ export const fetchPopularMovies = async (page = 1): Promise<MovieListItem[]> => 
     return [];
   }
 };
+
+export const fetchMovieDetail = async (movieId: number) => {
+  try {
+    const response = await tmdbApi.get(`/movie/${movieId}`);
+    return response.data;
+  } catch (error) {
+    console.error('영화 상세 정보 요청 실패: ', error);
+    return null;
+  }
+};
