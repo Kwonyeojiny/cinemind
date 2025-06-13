@@ -1,14 +1,27 @@
 import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
-import movieListData from '../data/movieListData.json';
 import SwiperSlider from '../components/SwiperSlider';
+import { useEffect, useState } from 'react';
+import type { MovieListItem } from '../types/movie';
+import { fetchPopularMovies } from '../api/tmdb';
 
 const MovieList = () => {
+  const [movies, setMovies] = useState<MovieListItem[]>([]);
+
+  useEffect(() => {
+    const getMovies = async () => {
+      const data = await fetchPopularMovies();
+      setMovies(data);
+    };
+
+    getMovies();
+  }, []);
+
   return (
     <main>
       <SwiperSlider />
       <div className="flex flex-wrap justify-center items-center gap-8">
-        {movieListData.results.map(movie => (
+        {movies.map(movie => (
           <Link to={`/details/${movie.id}`} key={movie.id}>
             <MovieCard
               title={movie.title}
