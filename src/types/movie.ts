@@ -9,3 +9,24 @@ export type MovieListItem = {
   adult: boolean;
   overview: string;
 };
+
+export type MovieDetail = {
+  id: number;
+  title: string;
+  poster_path: string;
+  vote_average: number;
+  genres: { id: number; name: string }[];
+  release_date: string;
+  backdrop_path: string;
+  adult: boolean;
+  overview: string;
+  runtime: number;
+  popularity: number;
+  original_language: string;
+  production_companies: {
+    id: number;
+    name: string;
+    logo_path: string | null;
+    origin_country: string;
+  }[];
+};
