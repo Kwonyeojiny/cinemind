@@ -36,3 +36,17 @@ export const fetchMovieDetail = async (movieId: number) => {
     return null;
   }
 };
+
+export const fetchSearchMovies = async (query: string): Promise<MovieListItem[]> => {
+  try {
+    const response = await tmdbApi.get('/search/movie', {
+      params: {
+        query,
+      },
+    });
+    return response.data.results;
+  } catch (error) {
+    console.error('영화 검색 요청 실패: ', error);
+    return [];
+  }
+};
