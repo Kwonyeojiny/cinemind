@@ -51,8 +51,8 @@ const Navbar = () => {
           </button>
         </div>
         <div className="flex gap-4">
-          <div>로그인</div>
-          <div>회원가입</div>
+          <Link to="/login">로그인</Link>
+          <Link to="/signup">회원가입</Link>
         </div>
       </div>
 
