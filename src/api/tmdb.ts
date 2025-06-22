@@ -6,13 +6,14 @@ import {
   type MovieDetailResponse,
 } from '../types/movie';
 
+const BASE_PARAMS = {
+  api_key: import.meta.env.VITE_TMDB_API_KEY,
+  language: 'ko-KR',
+  include_adult: false,
+};
+
 const tmdbApi = axios.create({
   baseURL: import.meta.env.VITE_TMDB_BASE_URL,
-  params: {
-    api_key: import.meta.env.VITE_TMDB_API_KEY,
-    language: 'ko-KR',
-    include_adult: false,
-  },
   headers: {
     accept: 'application/json',
   },
@@ -22,6 +23,7 @@ export const fetchPopularMovies = async (page = 1): Promise<MovieListItem[]> => 
   try {
     const response = await tmdbApi.get<MovieListResponse>('/movie/popular', {
       params: {
+        ...BASE_PARAMS,
         page,
       },
     });
@@ -34,7 +36,9 @@ export const fetchPopularMovies = async (page = 1): Promise<MovieListItem[]> => 
 
 export const fetchMovieDetail = async (movieId: number): Promise<MovieDetailItem | null> => {
   try {
-    const response = await tmdbApi.get<MovieDetailResponse>(`/movie/${movieId}`);
+    const response = await tmdbApi.get<MovieDetailResponse>(`/movie/${movieId}`, {
+      params: BASE_PARAMS,
+    });
     return response.data;
   } catch (error) {
     console.error('영화 상세 정보 요청 실패: ', error);
@@ -46,6 +50,7 @@ export const fetchSearchMovies = async (query: string): Promise<MovieListItem[]>
   try {
     const response = await tmdbApi.get<MovieListResponse>('/search/movie', {
       params: {
+        ...BASE_PARAMS,
         query,
       },
     });
