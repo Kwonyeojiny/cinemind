@@ -1,0 +1,19 @@
+@layer base {
+  :root {
+    --orange: #ff9b36;
+    --light-orange: #fbd6b0;
+    --yellow: #fbc114;
+    --light-yellow: #f8eac1;
+    --green: #98da5b;
+    --light-green: #dbebcc;
+    --sky-blue: #95c9e7;
+    --light-sky-blue: #d1e6f1;
+    --blue: #0e72d5;
+    --background: #efefef;
+    --foreground: #151515;
+    --lighter-gray: #cecece;
+    --light-gray: #9c9c9c;
+    --dark-gray: #6d6d6d;
+    --darker-gray: #404040;
+  }
+}
