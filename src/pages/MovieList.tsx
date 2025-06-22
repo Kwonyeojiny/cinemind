@@ -12,11 +12,6 @@ const MovieList = () => {
 
   useEffect(() => {
     const getMovies = async () => {
-      if (!query.trim()) {
-        setMovies([]);
-        return;
-      }
-
       const data = query ? await fetchSearchMovies(query) : await fetchPopularMovies();
       setMovies(data);
     };
