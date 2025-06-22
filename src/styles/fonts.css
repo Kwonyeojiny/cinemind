@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'gMarketBold';
+  src: url('/fonts/GmarketSansTTFBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gMarketMedium';
+  src: url('/fonts/GmarketSansTTFMedium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gMarketLight';
+  src: url('/fonts/GmarketSansTTFLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@layer utilities {
+  .font-gBold {
+    font-family: 'gMarketBold';
+  }
+
+  .font-gMedium {
+    font-family: 'gMarketMedium';
+  }
+
+  .font-gLight {
+    font-family: 'gMarketLight';
+  }
+}
