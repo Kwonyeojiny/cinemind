@@ -17,6 +17,11 @@ export type MovieListItem = {
   overview: string;
 };
 
+export type MovieDetailResponse = MovieDetailItem & {
+  status_code?: number;
+  status_message?: string;
+};
+
 export type MovieDetailItem = {
   id: number;
   title: string;
