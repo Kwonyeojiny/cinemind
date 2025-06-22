@@ -1,10 +1,22 @@
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, A11y, Autoplay } from 'swiper/modules';
-import movieListData from '../data/movieListData.json';
-import { baseUrl } from '../constants/api';
 import 'swiper/css';
+import type { MovieListItem } from '../types/movie';
+import { fetchPopularMovies } from '../api/tmdb';
+import { baseUrl } from '../constants/api';
 
 const SwiperSlider = () => {
+  const [movies, setMovies] = useState<MovieListItem[]>([]);
+
+  useEffect(() => {
+    const getMovies = async () => {
+      const data = await fetchPopularMovies();
+      setMovies(data);
+    };
+    getMovies();
+  }, []);
+
   return (
     <Swiper
       modules={[Pagination, A11y, Autoplay]}
@@ -28,13 +40,17 @@ const SwiperSlider = () => {
         },
       }}
     >
-      {movieListData.results.map((movie, index) => (
+      {movies.slice(0, 10).map((movie, index) => (
         <SwiperSlide key={movie.id}>
           <div>
-            <img src={`${baseUrl}${movie.poster_path}`} alt={movie.title} className="w-80" />
-            Add commentMore actions
+            <img
+              src={`${baseUrl}${movie.poster_path}`}
+              alt={movie.title}
+              className="w-80 aspect-[2/3]"
+            />
             <h1>
-              Top <span>{index + 1}</span>
+              Top <span>{index + 1}: </span>
+              {movie.title}
             </h1>
           </div>
         </SwiperSlide>
