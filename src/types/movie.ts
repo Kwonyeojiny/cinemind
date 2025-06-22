@@ -1,3 +1,10 @@
+export type MovieListResponse = {
+  page: number;
+  total_results: number;
+  total_pages: number;
+  results: MovieListItem[];
+};
+
 export type MovieListItem = {
   id: number;
   title: string;
